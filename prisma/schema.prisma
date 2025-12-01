@@ -1,0 +1,24 @@
+// This connects to your database
+datasource db {
+  provider = "postgresql"
+}
+
+// This generates the TypeScript client (so you have auto-completion)
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+model Job {
+  id        String   @id @default(uuid())  // Django: id = models.UUIDField(...)
+  createdAt DateTime @default(now())       // Django: auto_now_add=True
+
+  userId    String
+  
+  title     String   // Django: models.CharField()
+  company   String
+  location  String   // "Remote", "On-site", etc.
+  status    String   @default("Applied") // "Wishlist", "Applied", "Interview"
+  
+  link      String?  // The "?" means it can be NULL (Optional)
+}
