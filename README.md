@@ -1,36 +1,15 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🚀 CareerFlowCareerFlow is a modern, full-stack Job Application Tracking System (ATS) built to help developers organize their job hunt. It replaces messy spreadsheets with a drag-and-drop style interface and uses Generative AI to write personalized cover letters in seconds.✨ Key Features📋 Kanban Dashboard: Visualize your job search with status columns (Wishlist, Applied, Interview, Offer).🔐 Secure Authentication: User accounts managed via Clerk (Google & Email login).🤖 AI Cover Letters: Integrated Google Gemini AI to draft professional cover letters based on job descriptions.☁️ Cloud Database: Serverless PostgreSQL database hosted on Neon for zero-config scalability.⚡ Real-Time Updates: Built with Next.js Server Actions for instant mutations without API endpoints.🎨 Modern UI: Beautiful components using Shadcn/UI and Tailwind CSS.🏗️ ArchitectureThe application follows the modern T3-style architecture using Server Actions for backend logic.Frontend: Next.js 15 (App Router) renders the React Server Components.Auth: Middleware protects routes; Clerk handles sessions.Backend: Server Actions (actions.ts) execute directly on the server to talk to the DB.Database: Prisma ORM translates TypeScript code into SQL for the Neon Postgres DB.AI Layer: The backend sends prompts to Google's Gemini Flash model to generate text.🛠️ Tech StackFramework: Next.js 15Language: TypeScriptStyling: Tailwind CSS + Shadcn/UIDatabase: PostgreSQL (Neon)ORM: PrismaAuth: ClerkAI: Google Gemini APIDeployment: Vercel🚀 Getting Started LocallyFollow these steps to run CareerFlow on your machine.1. Clone the repositorygit clone [https://github.com/YOUR_USERNAME/career-flow.git](https://github.com/YOUR_USERNAME/career-flow.git)
+cd career-flow
+2. Install Dependenciesnpm install
+3. Environment SetupCreate a .env file in the root directory and add the following keys:# Database (Neon)
+DATABASE_URL="postgresql://..."
 
-## Getting Started
+# Auth (Clerk)
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="pk_test_..."
+CLERK_SECRET_KEY="sk_test_..."
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# AI (Google)
+GEMINI_API_KEY="AIza..."
+4. Setup DatabasePush the schema to your database:npx prisma db push
+5. Run the Appnpm run dev
+Open http://localhost:3000 to view it in the browser.📦 DeploymentThis project is optimized for deployment on Vercel.Push your code to GitHub.Import the project into Vercel.Add the Environment Variables (from step 3 above) in the Vercel dashboard.IMPORTANT: Add "postinstall": "prisma generate" to your package.json scripts.Click Deploy.🤝 ContributingContributions are welcome! Feel free to open issues or submit pull requests.Fork the ProjectCreate your Feature Branch (git checkout -b feature/AmazingFeature)Commit your Changes (git commit -m 'Add some AmazingFeature')Push to the Branch (git push origin feature/AmazingFeature)Open a Pull Request📄 LicenseDistributed under the MIT License. See LICENSE for more information.
