@@ -3,6 +3,7 @@ import { addJob } from "./actions";
 import prisma from "@/lib/prisma";
 import { UserButton } from "@clerk/nextjs";
 import { auth } from "@clerk/nextjs/server";
+import { Job } from "@prisma/client";
 
 export default async function Home() {
   // 1. Auth Check
@@ -15,10 +16,10 @@ export default async function Home() {
     orderBy: { createdAt: 'desc' }
   });
 
-  // 3. Filter Buckets
-  const wishlist = jobs.filter((job) => job.status === "Wishlist");
-  const applied = jobs.filter((job) => job.status === "Applied");
-  const interview = jobs.filter((job) => job.status === "Interview");
+ // 2. Add ": Job" to the filter arguments
+  const wishlist = jobs.filter((job: Job) => job.status === "Wishlist");
+  const applied = jobs.filter((job: Job) => job.status === "Applied");
+  const interview = jobs.filter((job: Job) => job.status === "Interview");
 
   return (
     <main className="p-8 h-screen bg-gray-50 text-gray-900">
