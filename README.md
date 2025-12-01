@@ -59,18 +59,6 @@
 - Database: Prisma -> Neon Postgres
 - AI Layer: Server-side prompts to Gemini Flash model to generate text
 
-```mermaid
-flowchart LR
-  A[Client (RSC/RSC+CSR)] -->|Actions| B[Next.js Server Actions]
-  B --> C[Prisma ORM]
-  C --> D[(Neon Postgres)]
-  B --> E[Gemini Flash API]
-  A --> F[Clerk Auth]
-  F --> B
-```
-
----
-
 ## 🛠️ Tech Stack
 
 - Framework: Next.js 15 (App Router)
