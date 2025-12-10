@@ -74,7 +74,7 @@ export async function generateCoverLetter(prevState: any, formData: FormData) {
     return { success: false, letter: "Missing GEMINI_API_KEY. Add it to your .env and restart the dev server." };
   }
   const genAI = new GoogleGenerativeAI(apiKey);
-  const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+  const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
   // 2. The Prompt (Instructions for the AI)
   const prompt = `
