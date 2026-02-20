@@ -8,17 +8,24 @@ generator client {
   provider = "prisma-client-js"
 }
 
+model User {
+  id        String   @id                   // Clerk user ID (e.g. "user_abc123")
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
 
 model Job {
-  id        String   @id @default(uuid())  // Django: id = models.UUIDField(...)
-  createdAt DateTime @default(now())       // Django: auto_now_add=True
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
 
-  userId    String
-  
-  title     String   // Django: models.CharField()
+  userId    String   // Clerk user ID - matches User.id
+
+  title     String
   company   String
-  location  String   // "Remote", "On-site", etc.
-  status    String   @default("Applied") // "Wishlist", "Applied", "Interview"
-  
-  link      String?  // The "?" means it can be NULL (Optional)
+  location  String
+  status    String   @default("Applied")
+
+  link      String?
 }

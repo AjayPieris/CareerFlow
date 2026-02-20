@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs"; // <--- Import this
 
 const inter = Inter({ subsets: ["latin"] });
+const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 
 export const metadata: Metadata = {
   title: "CareerFlow",
@@ -19,7 +20,9 @@ export default function RootLayout({
     // Wrap the HTML in ClerkProvider
     <ClerkProvider>
       <html lang="en">
-        <body className={inter.className}>{children}</body>
+        <body className={`${inter.className} ${outfit.variable}`}>
+          {children}
+        </body>
       </html>
     </ClerkProvider>
   );
