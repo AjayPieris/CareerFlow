@@ -39,38 +39,42 @@ export default async function Home() {
   const interview = jobs.filter((job: Job) => job.status === "Interview");
 
   return (
-    <main className="p-8 h-screen bg-gray-50 text-gray-900">
+    <main className="p-4 sm:p-8 min-h-screen bg-gray-50 text-gray-900">
       {/* --- UNIFIED HEADER --- */}
-      <div className="flex justify-between items-center mb-8">
-        {/* Left Side: User Profile + Title */}
-        <div className="flex items-center gap-4">
-          <div>
-            <h1 className="text-3xl font-extrabold">
-              <img src={Icon.src} alt="CareerFlow Icon" className="inline-block w-10 h-10 ml-2 -mt-1" /> CareerFlow 
-            </h1>
-            
-            <p className="text-purple-600 text-sm text-right">Track your applications</p>
-          </div>
+      <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-6 sm:mb-8">
+        {/* Left Side: Title */}
+        <div>
+          <h1 className="text-2xl sm:text-3xl font-extrabold">
+            <img
+              src={Icon.src}
+              alt="CareerFlow Icon"
+              className="inline-block w-8 h-8 sm:w-10 sm:h-10 ml-2 -mt-1"
+            />{" "}
+            CareerFlow
+          </h1>
+          <p className="text-purple-600 text-sm text-right">
+            Track your applications
+          </p>
         </div>
 
-        {/* Right Side: Add Job Form */}
-        <form action={addJob} className="flex gap-2">
+        {/* Right Side: Add Job Form + User Button */}
+        <form action={addJob} className="flex flex-wrap items-center gap-2">
           <input
             name="title"
             placeholder="Job Title"
-            className="border p-2 rounded text-black text-sm"
+            className="border p-2 rounded text-black text-sm flex-1 min-w-[110px]"
             required
           />
           <input
             name="company"
             placeholder="Company"
-            className="border p-2 rounded text-black text-sm"
+            className="border p-2 rounded text-black text-sm flex-1 min-w-[110px]"
             required
           />
           <input name="location" value="Remote" type="hidden" />
           <button
             type="submit"
-            className="bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 text-sm mr-10"
+            className="bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 text-sm whitespace-nowrap"
           >
             + Add
           </button>
@@ -79,9 +83,9 @@ export default async function Home() {
       </div>
 
       {/* --- THE BOARD --- */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 h-[80vh]">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* COLUMN 1: WISHLIST */}
-        <div className="bg-gray-100 p-4 rounded-xl flex flex-col overflow-y-auto">
+        <div className="bg-gray-100 p-4 rounded-xl flex flex-col max-h-[70vh] md:h-[80vh] overflow-y-auto">
           <h2 className="font-semibold mb-4 text-gray-700">
             🎯 Wishlist ({wishlist.length})
           </h2>
@@ -104,7 +108,7 @@ export default async function Home() {
         </div>
 
         {/* COLUMN 2: APPLIED */}
-        <div className="bg-gray-100 p-4 rounded-xl flex flex-col overflow-y-auto">
+        <div className="bg-gray-100 p-4 rounded-xl flex flex-col max-h-[70vh] md:h-[80vh] overflow-y-auto">
           <h2 className="font-semibold mb-4 text-blue-600">
             🚀 Applied ({applied.length})
           </h2>
@@ -122,7 +126,7 @@ export default async function Home() {
         </div>
 
         {/* COLUMN 3: INTERVIEW */}
-        <div className="bg-gray-100 p-4 rounded-xl flex flex-col overflow-y-auto">
+        <div className="bg-gray-100 p-4 rounded-xl flex flex-col max-h-[70vh] md:h-[80vh] overflow-y-auto">
           <h2 className="font-semibold mb-4 text-purple-600">
             🗣️ Interview ({interview.length})
           </h2>

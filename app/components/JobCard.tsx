@@ -15,7 +15,14 @@ interface JobCardProps {
   status: string;
 }
 
-export function JobCard({ id, title, company, type, date, status }: JobCardProps) {
+export function JobCard({
+  id,
+  title,
+  company,
+  type,
+  date,
+  status,
+}: JobCardProps) {
   return (
     <Card className="hover:shadow-lg transition-shadow mb-4 relative group">
       <CardHeader className="p-4 pb-2">
@@ -25,38 +32,40 @@ export function JobCard({ id, title, company, type, date, status }: JobCardProps
         </div>
         <p className="text-sm text-gray-500">{company}</p>
       </CardHeader>
-      
+
       <CardContent className="p-4 pt-2">
         <Separator className="my-2" />
-        <div className="flex justify-between items-center ">
-            <p className="text-xs text-gray-400">Applied: {date}</p>
-            <form action={updateStatus} className="flex-1 h-auto ">
-                <input type="hidden" name="id" value={id} />
-                <select 
-                    name="status"
-                    defaultValue={status}
-                    onChange={(e) => e.target.form?.requestSubmit()} // Auto-submit on change
-                    className="text-xs border-2 ml-1 h-8 rounded p-1 bg-gray-50 cursor-pointer hover:bg-gray-100"
-                >
-                    <option value="Wishlist">🎯 Wishlist</option>
-                    <option value="Applied">🚀 Applied</option>
-                    <option value="Interview">🗣️ Interview</option>
-                    <option value="Offer">🎉 Offer</option>
-                    <option value="Rejected">❌ Rejected</option>
-                </select>
+        <div className="flex flex-wrap justify-between items-center gap-y-2">
+          <p className="text-xs text-gray-400 shrink-0">Applied: {date}</p>
+          <div className="flex items-center gap-1 flex-wrap">
+            <form action={updateStatus} className="h-auto">
+              <input type="hidden" name="id" value={id} />
+              <select
+                name="status"
+                defaultValue={status}
+                onChange={(e) => e.target.form?.requestSubmit()}
+                className="text-xs border-2 h-8 rounded p-1 bg-gray-50 cursor-pointer hover:bg-gray-100"
+              >
+                <option value="Wishlist">🎯 Wishlist</option>
+                <option value="Applied">🚀 Applied</option>
+                <option value="Interview">🗣️ Interview</option>
+                <option value="Offer">🎉 Offer</option>
+                <option value="Rejected">❌ Rejected</option>
+              </select>
             </form>
-            {/* NEW: AI BUTTON */}
+            {/* AI BUTTON */}
             <AIButton company={company} title={title} />
-            {/* DELETE BUTTON (Hidden until you hover) */}
+            {/* DELETE BUTTON — always visible on touch, hover-only on desktop */}
             <form action={deleteJob}>
-                <input type="hidden" name="id" value={id} />
-                <button 
-                    type="submit" 
-                    className="text-red-400 hover:text-red-600 text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity ml-1"
-                >
-                    🗑 Delete
-                </button>
+              <input type="hidden" name="id" value={id} />
+              <button
+                type="submit"
+                className="text-red-400 hover:text-red-600 text-sm font-bold opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity"
+              >
+                🗑
+              </button>
             </form>
+          </div>
         </div>
       </CardContent>
     </Card>

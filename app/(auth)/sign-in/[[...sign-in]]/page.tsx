@@ -54,7 +54,7 @@ export default function SignInPage() {
     <div className="min-h-screen flex items-center justify-center bg-[#eef1f5] p-4">
       <div className="w-full max-w-4xl flex rounded-3xl overflow-hidden shadow-2xl bg-white">
         {/* ── LEFT PANEL ── */}
-        <div className="w-full md:w-1/2 p-10 flex flex-col">
+        <div className="w-full md:w-1/2 p-6 sm:p-10 flex flex-col">
           {/* Heading */}
           <div className="flex-1 flex flex-col justify-center ali max-w-sm mx-auto w-full">
             <h1 className="text-3xl text-gray-800 mb-6 text-center font-extrabold ">
