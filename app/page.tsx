@@ -4,6 +4,7 @@ import prisma from "@/lib/prisma";
 import { UserButton } from "@clerk/nextjs";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { Job } from "@prisma/client";
+import Icon from "../public/careerflow-mark.svg";
 
 export default async function Home() {
   // 1. Auth Check
@@ -44,8 +45,11 @@ export default async function Home() {
         {/* Left Side: User Profile + Title */}
         <div className="flex items-center gap-4">
           <div>
-            <h1 className="text-3xl font-bold">CareerFlow</h1>
-            <p className="text-gray-500 text-sm">Track your applications</p>
+            <h1 className="text-3xl font-extrabold">
+              <img src={Icon.src} alt="CareerFlow Icon" className="inline-block w-10 h-10 ml-2 -mt-1" /> CareerFlow 
+            </h1>
+            
+            <p className="text-purple-600 text-sm text-right">Track your applications</p>
           </div>
         </div>
 
