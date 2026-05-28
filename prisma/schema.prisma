@@ -28,4 +28,5 @@ model Job {
   status    String   @default("Applied")
 
   link      String?
+  note      String?
 }

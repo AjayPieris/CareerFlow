@@ -98,6 +98,7 @@ export default async function Home() {
               type={job.location}
               date={job.createdAt.toLocaleDateString()}
               status={job.status}
+              note={job.note}
             />
           ))}
           {wishlist.length === 0 && (
@@ -121,6 +122,7 @@ export default async function Home() {
               type={job.location}
               date={job.createdAt.toLocaleDateString()}
               status={job.status}
+              note={job.note}
             />
           ))}
         </div>
@@ -139,6 +141,7 @@ export default async function Home() {
               type={job.location}
               date={job.createdAt.toLocaleDateString()}
               status={job.status}
+              note={job.note}
             />
           ))}
         </div>

@@ -63,6 +63,24 @@ export async function updateStatus(formData: FormData) {
   revalidatePath("/");
 }
 
+export async function updateNote(formData: FormData) {
+  const { userId } = await auth();
+  if (!userId) throw new Error("Unauthorized");
+
+  const jobId = formData.get("id") as string;
+  const note = formData.get("note") as string;
+
+  await prisma.job.updateMany({
+    where: { 
+      id: jobId,
+      userId: userId,
+    },
+    data: { note: note || null },
+  });
+
+  revalidatePath("/");
+}
+
 export async function generateCoverLetter(prevState: any, formData: FormData) {
   const company = formData.get("company") as string;
   const title = formData.get("title") as string;
